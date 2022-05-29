@@ -1,0 +1,131 @@
+
+
+
+
+	/**
+	*
+	*	STATIC
+	*	Styles for static pages
+	*
+	*/
+
+
+@media screen and (max-width: 1400px) {
+	.footer .footer-content{
+		width: 100%;
+	}
+}
+
+
+
+
+	/*----------  STYLES  ----------*/
+
+
+
+	// Base
+
+	.static{
+
+
+
+	}
+
+
+	// Submenu
+
+	.static-submenu{
+
+		background-image: url(/images/statics-submenu-background.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+
+		.container{
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			padding: 2.5em 0;
+
+			li{
+
+				display: block;
+				padding: 0 1.65em;
+				height: 15px;
+				background: url(/images/border-static-menu.jpg) center right no-repeat;
+
+				&:last-child{ border-right: 0; background: none !important;}
+
+
+				a{
+
+					position: relative;
+					color: $white;
+					letter-spacing: 0.04em;
+					font-size: 0.786em;
+					font-weight: normal;
+					font-family: "Montserrat", sans-serif;
+
+
+					&:after{
+
+						display: block;
+						content: '';
+						position: absolute;
+						left: 0;
+						bottom: -0.5em;
+						width: 0;
+						height: 3px;
+						background-color: $white;
+						transition: width 0.2s ease;
+
+					}
+
+					&:hover:after, &.active:after{ width: 100%; }
+
+				}
+
+			}
+
+		}
+
+
+		// Next container
+
+		& + .container{ padding-top: $main-containers-vertical-padding; }
+
+	}
+
+
+
+	// Heading
+
+	.static-main-heading{
+
+		margin-bottom: 3.55em;
+
+	}
+
+	.static-title{
+
+		display: block;
+		margin: auto;
+		font-size: 2.45em;
+		font-weight: $font-content-weight;
+		text-align: center;
+
+	}
+
+	.static-subtitle{
+
+		display: block;
+		margin: auto;
+		text-align: center;
+		margin-top: 1.3em;
+		font-size: 0.86em;
+		letter-spacing: 0.0885em;
+
+
+	}

@@ -1,0 +1,5 @@
+This directory contains the new SCSS used to replace the old ones.
+Theses files are meant to be imported as-is in style.scss ( with no .page-XXX in front of it )
+All new CSS rules *must* be added in this directory, a new file can be created if needed
+
+- Gabriel

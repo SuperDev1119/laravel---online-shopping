@@ -1,0 +1,69 @@
+
+
+
+
+/**
+*
+* CGU.SCSS
+* Styles for C.G.U page
+*
+*/
+
+
+
+
+
+
+/*----------  STYLES  ----------*/
+
+
+
+// Base
+
+.page-cgu{
+
+  .main > .container{
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 0px;
+    border-top:0px;
+  }
+
+}
+
+
+
+// Section
+
+.page-cgu .cgu-section{
+
+  border-bottom: 1px solid $grey-light;
+  padding: 2em 1em;
+
+  &:first-child{ padding-top: 0; }
+  &:last-child{ border-bottom: none; }
+
+
+  // Title
+
+  .cgu-section-title{
+
+    font-weight: bolder;
+    margin-bottom: 1em;
+
+  }
+
+  // Paragraph
+
+  p{
+    letter-spacing: 0.0885em;
+    font-size: 0.786em;
+    line-height: 1.2;
+    margin-bottom: 1em;
+    line-height: 1.7em;
+
+    &:last-child{ margin-bottom: 0; }
+
+  }
+
+}

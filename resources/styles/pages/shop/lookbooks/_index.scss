@@ -1,0 +1,71 @@
+.main-heading-banner{
+  justify-content:center;
+  background-size: cover;
+  text-align: center;
+  height: 15.5em;
+
+  .content-propal {
+    line-height: 2;
+
+    .main-heading-title {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      padding: 20px 0;
+      margin-bottom: 0;
+      font-weight: 700;
+      color: #292929;
+
+      @media screen and (min-width: $screen-sm-min) { font-size: 2.6em; }
+    }
+
+    .main-heading-content{
+      background-color: rgba(0,0,0,0);
+      justify-content: center;
+      border-bottom: none;
+      align-items: center;
+      display: flex;
+      color: #000;
+    }
+  }
+
+  & + .container { padding-top: $grid-gutter-width; }
+
+  @media screen and (max-width: $screen-sm-max) {
+    background: url(/images/banners/banner_home_smart.jpg) right bottom no-repeat;
+
+    &:after {
+      content: "";
+      z-index: -1;
+      display: block;
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+      background: rgba(#fff, .5);
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    height: 350px;
+    .main-heading-content { padding-top: 0; }
+  }
+
+  @media screen and (max-width: 360px) {
+    height: 250px;
+    .content-propal .main-heading-title { font-size: 1em; }
+  }
+
+}
+
+@media screen and (max-width: 1280px) {
+  .full-bg-grey{width: 100%;}
+}
+
+@media screen and (max-width: 980px) {
+  .main-heading-banner{
+    height: 280px;
+  }
+  .item-2{
+    border-top: 3px solid #F6F6F6 !important;
+    margin-top:1.5rem !important;
+    padding-top: 40px !important;
+  }
+}

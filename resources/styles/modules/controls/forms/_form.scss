@@ -1,0 +1,247 @@
+
+
+
+
+	/**
+	*
+	*	FORMS.SCSS
+	*	Forms styles definition
+	*
+	*/
+
+
+
+
+	/*----------  VARIABLES  ----------*/
+
+
+
+
+	// Inputs
+
+	$inputs-border-radius: 0.2em;
+
+
+
+
+
+
+
+
+	/*----------  STYLES  ----------*/
+
+
+
+	// Form
+
+	.form{
+
+
+		// Title
+
+		.form-title{
+
+			display: block;
+			text-transform: uppercase;
+			margin-bottom: 3em;
+
+		}
+
+
+		// Dropdown
+
+		.dropdown.dropdown-popin{
+
+			width: 100%;
+
+
+			// Label
+
+			.dropdown-label{ color: $grey-dark; }
+
+		}
+
+	}
+
+
+	// Group
+
+	.form-group{
+
+		margin-bottom: 1.42em;
+
+		&:last-child{ margin-bottom: 0px; }
+
+	}
+
+
+	// Control
+
+	.form-control{
+
+		display: block;
+		width: 100%;
+		height: 42px;
+		border: 1px solid $grey-light;
+		border-radius: $inputs-border-radius;
+		font-size: 0.86em;
+		padding: 15px 1.5em;
+		letter-spacing: 0.04em;
+		vertical-align: middle;
+
+		&::-webkit-input-placeholder {color: $grey-dark; }
+		&::-moz-placeholder {color: $grey-dark; }
+		&:-ms-input-placeholder {color: $grey-dark; }
+		:-moz-placeholder { color: $grey-dark; }
+
+
+
+		// And group
+
+		&.form-group{
+			margin-bottom: 1.42em;
+			height: 42px;
+		}
+		&.form-group:focus{
+			background-color: #fcfcfc;
+		}
+	}
+
+	textarea.form-control{
+
+		height: 150px!important;
+		line-height: 1.5;
+		resize: none;
+
+	}
+
+	select.form-control{
+
+		display: flex;
+		align-items: center;
+		height: 4em;
+		padding: 0 1.5em;
+		color: $grey-dark;
+		background-color: transparent;
+		background-image: url(/images/form-arrow.png);
+		background-size: 0.8em;
+		background-position: calc(100% - 1em) 50%;
+		background-repeat: no-repeat;
+
+	}
+
+
+	// Error
+
+	.form-group.error{
+
+		.form-control{
+
+			color: $red;
+			border-color: $red;
+
+		}
+
+	}
+
+	.form-group .form-error{
+
+		font-size: 0.8em;
+		text-align: left;
+		color: $red;
+		margin-top: -0.8em;
+		margin-bottom: 2em;
+
+	}
+
+
+	// Input group
+
+	.input-group{
+
+		display: flex;
+
+
+
+		// Input
+
+		input{
+
+
+			@extend .form-control;
+			height: 42px;
+			border-left: none;
+			border-radius: 0;
+			box-shadow: none;
+
+			&:first-child{
+
+				border-left: 1px solid $grey-light;
+				border-top-left-radius: $inputs-border-radius;
+				border-bottom-left-radius: $inputs-border-radius;
+
+			}
+
+			&:last-child{
+
+				border-top-right-radius: $inputs-border-radius;
+				border-bottom-right-radius: $inputs-border-radius;
+				border-left: none;
+
+			}
+
+			&:focus{
+				background-color: #fcfcfc;
+			}
+
+		}
+
+
+		// Dropdown
+
+		.dropdown.dropdown-popin{
+
+
+			// Label
+
+			.dropdown-label{
+
+				border-radius: 0;
+				box-shadow: none;
+				border-left: none;
+
+			}
+
+
+			// Items
+
+			.dropdown-items{
+
+				margin-left: -1px;
+				width: calc(100% + 1px);
+
+			}
+
+
+			&:first-child .dropdown-label{
+
+				border-left: 1px solid $grey-light;
+				border-top-left-radius: $inputs-border-radius;
+				border-bottom-left-radius: $inputs-border-radius;
+
+			}
+
+			&:last-child .dropdown-label{
+
+				border-top-right-radius: $inputs-border-radius;
+				border-bottom-right-radius: $inputs-border-radius;
+				border-left: none;
+
+			}
+
+		}
+
+	}
+
+
+

@@ -1,0 +1,111 @@
+
+
+
+
+/**
+*
+* ABOUT.SCSS
+* About static page styles
+*
+*/
+
+
+
+
+
+
+/*----------  STYLES  ----------*/
+
+// height: calc(100vh - #{$header-height});
+
+// Base
+
+.page-about{
+
+
+  // Main
+
+  .main{ height: 742px; }
+
+  .main > .container{
+
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    height: 100%;
+    margin-top: 0px;
+    border-top:0px;
+
+
+  }
+
+
+  // Background
+
+  .page-about-background, .page-about-content{
+
+    width: 50%;
+    height: 100%;
+    float: left;
+
+  }
+
+
+}
+
+
+// Background
+
+.page-about-background{
+
+  background-image: url(/images/about_semi_background.jpg);
+  background-color: #fff;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+
+}
+
+
+// Content
+
+.page-about-content{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2em 2em 2em 3em;
+
+
+  // Title
+
+  .main-heading-title{
+
+    font-size: 2.45em;
+
+    &:after{
+
+      display: block;
+      content: '';
+      width: 59px;
+      height: 4px;
+      background-color: $black;
+      margin: 1.21em 0 1.05em 0;
+
+    }
+
+  }
+
+
+  // Paragraphs
+
+  p{
+
+    line-height: 2.5;
+    margin-bottom: 1em;
+    letter-spacing: 0.0885em;
+    font-size: 0.86em;
+
+  }
+
+}

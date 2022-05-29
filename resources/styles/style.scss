@@ -1,0 +1,93 @@
+/**
+*
+*	STYLE.SCSS
+* 	Global imports for global styles
+*
+*/
+
+/*----------  CONFIG  ----------*/
+
+// Variables
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "variables";
+
+// Base
+@import "shared/reset";
+@import "shared/global";
+
+// Partials
+@import "shared/partials/header";
+@import "shared/partials/header-mobile";
+@import "shared/partials/main";
+@import "shared/partials/footer";
+
+// Assets
+@import "shared/assets/fonts";
+@import "shared/assets/icons";
+// @import "shared/assets/animations";
+
+// Bootstrap
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+// Namespaces
+@import "shared/namespaces/static";
+
+// Controls
+@import "modules/controls/button";
+@import "modules/controls/accordion";
+@import "modules/controls/forms/form";
+@import "modules/controls/range";
+
+// Components
+@import "modules/components/breadcrumb";
+@import "modules/components/dropdowns/list";
+@import "modules/components/dropdowns/popin";
+@import "modules/components/nested";
+@import "modules/components/search/search";
+@import "modules/components/search/search-mobile";
+@import "modules/components/product/thumb";
+
+/*----------  NEW SCSS  ----------*/
+
+@import "sass/global";
+@import "sass/home";
+
+/*----------  PAGES  ----------*/
+
+.page-home { @import "pages/shop/home"; }
+.page-lookbooks-index, .page-inspirations { @import "pages/shop/lookbooks/index"; }
+
+/** POST **/
+
+@import "shared/namespaces/shop/products";
+@import "shared/namespaces/shop/filters";
+
+@import "pages/shop/products/common";
+
+.page-marques-index { @import "pages/shop/brands/index"; }
+
+.page-grid { @import "pages/shop/products/grid"; }
+
+.page-shop-promotions { @import "pages/shop/products/promotions"; }
+
+@import "pages/shop/products/product";
+
+.page-shop-redirect { @import "pages/shop/redirect"; }
+
+// Static
+@import "pages/static/faq";
+// @import "pages/static/press";
+@import "pages/static/cgu";
+// @import "pages/static/manual";
+@import "pages/static/about";
+// @import "pages/static/contact";
+
+// Error pages
+.page-404 { @import "errors/404"; }
+
+@import "shared/fixes";

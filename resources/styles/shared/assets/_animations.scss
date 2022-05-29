@@ -1,0 +1,97 @@
+
+
+
+
+	/**
+	*
+	*	ANIMATIONS
+	* 	Animations definition
+	*
+	*/
+
+
+
+
+
+
+
+
+	
+
+	/*----------  BASICS  ----------*/
+
+
+
+	// Fade
+
+	@keyframes FadeIn{ 0%{ opacity: 0; } 100%{ opacity: 1; } }
+
+	@keyframes FadeOut{ 0%{ opacity: 1; } 100%{ opacity: 0; } }
+
+
+
+	// Slide
+
+	@keyframes SlideInTop { 0%{ opacity: 0; transform: translate3d(0, -100%, 0); } 100%{ opacity: 1; transform: none; } }
+	@keyframes SlideOutTop { 0%{ opacity: 1; transform: none } 100%{ opacity: 1; transform: translate3d(0, -100%, 0); } }
+
+	@keyframes SlideInBottom { 0%{ opacity: 0; transform: translate3d(0, 100%, 0); } 100%{ opacity: 1; transform: none; } }
+	@keyframes SlideOutBottom { 0%{ opacity: 1; transform: none } 100%{ opacity: 1; transform: translate3d(0, 100%, 0); } }
+
+	@keyframes SlideInLeft { 0%{ opacity: 0; transform: translate3d(-100%, 0, 0); } 100%{ opacity: 1; transform: none; } }
+	@keyframes SlideOutLeft { 0%{ opacity: 1; transform: none } 100%{ opacity: 1; transform: translate3d(-100%, 0, 0); } }
+
+	@keyframes SlideInRight { 0%{ opacity: 0; transform: translate3d(100%, 0, 0); } 100%{ opacity: 1; transform: none; } }
+	@keyframes SlideOutRight { 0%{ opacity: 1; transform: none } 100%{ opacity: 1; transform: translate3d(100%, 0, 0); } }
+
+
+
+
+
+
+
+
+
+
+
+
+	/*----------  SPECIFICS  ----------*/
+	
+	
+	
+	// Header
+
+	@keyframes MenuEmphasisOnScroll 
+	{
+		0%{ transform:translate3d(0, -100%, 0); }
+		100%{ transform:translate3d(0, 0, 0); }
+	}
+
+	@keyframes MenuEmphasisOnScrollResponsive 
+	{
+		0%{ transform:translate3d(-$header-responsive-menu-width, -100%, 0); }
+		100%{ transform:translate3d(-$header-responsive-menu-width, 0, 0); }
+	}
+
+
+	// Menu
+	
+	@keyframes ResponsiveMenuEnter
+	{
+		0%{ opacity: 0; transform: translate3d(-100%, 0, 0); }
+		100%{ opacity: 1; transform: translate3d(0, 0, 0); }
+	}
+
+	@keyframes ResponsiveMenuLeave
+	{
+		0%{ opacity: 1; transform: translate3d(0, 0, 0); }
+		100%{ opacity: 0; transform: translate3d(-100%, 0, 0); }
+	}
+
+
+	// Search
+
+	@keyframes SearchingNavLeave { 0%{ transform: none; } 100%{ transform: translateX(calc(-100% - 8em)); } }
+
+	@keyframes SearchingMemberLeave { 0%{ transform: none; } 100%{ transform: translateX(calc(100% + 8em)); } }
+

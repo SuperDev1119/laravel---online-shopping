@@ -1,0 +1,26 @@
+.full-bg-grey{
+  background-color: $grey-v3;
+  margin: 0 auto;
+
+  .container{
+    border-top: 6px solid $grey-v3;
+    background-color: white;
+  }
+}
+
+.main-heading-banner {
+  background-image: url(/images/banners/banner_home.jpg) !important;
+  height: 400px !important;
+
+  .btn {
+    display: block;
+    width: 250px; margin-top: 1em;
+    letter-spacing: 2px;
+    font-size: 1em;
+
+    @media screen and (min-width: $screen-sm-min) {
+      display: inline-block;
+      margin: 0 20px;
+    }
+  }
+}

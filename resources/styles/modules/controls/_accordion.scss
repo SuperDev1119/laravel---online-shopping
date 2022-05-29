@@ -1,0 +1,109 @@
+
+
+
+
+/**
+*
+*	ACCORDION|SCSS
+*	------------------------
+*	DESC | Accordion modules styles definition
+*	LOCATION | styles > modules > controls > accordion.scss
+*
+*/
+
+
+
+
+
+
+
+
+
+/*----------  STYLES  ----------*/
+
+
+
+// Base
+
+.accordion{
+
+	padding-top: 2em !important;
+	padding-bottom: 2em !important;
+	font-size: 0.86em;
+	letter-spacing: 0.093em;
+
+
+	// Title
+
+	.accordion-title{
+
+		display: block;
+		position: relative;
+		width: 100%;
+		font-weight: 700;
+		text-decoration: none;
+
+
+		// Close
+
+		.accordion-close{
+
+			display: block;
+			font-weight: 700;
+			position: absolute;
+			top: -0.4em;
+			right: 0;
+			padding: 0.3em 0.5em;
+			border: 2px solid $black;
+			border-radius: 2px;
+
+			&:after{
+
+				display: inline-block;
+				content: '+';
+				transition: transform 0.3s ease;
+
+			}
+
+		}
+
+	}
+
+
+	// Content
+
+	.accordion-content{
+
+		display: none;
+		line-height: 1.7;
+		width: calc(100% - 4em);
+		margin-top: 2em;
+
+	}
+
+}
+
+
+
+// Interactions
+
+.accordion.open{
+
+
+	// Title
+
+	.accordion-title{
+
+
+		// Close
+
+		.accordion-close:after{ transform: rotate(45deg); }
+
+	}
+
+
+	// Content
+
+	.accordion-content{ display: block; }
+
+}

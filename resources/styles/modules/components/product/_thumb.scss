@@ -1,0 +1,124 @@
+.shop-products-grid {
+  margin-right: -3px;
+  margin-top: -3px;
+  border: 0px solid $grey-v3;
+  border-bottom-width: 3px;
+}
+
+.product-thumb {
+  border: 3px solid $grey-v3;
+  border-left-width: 0; border-bottom-width: 0;
+
+  padding: 25px 10px;
+
+  @media screen and (max-width: $screen-sm-max) {
+    height: 350px;
+
+    padding-top: 20px;
+    padding-bottom: 5px;
+  }
+
+  .product-thumb-info,
+  .product-thumb-photo {
+    display: block;
+  }
+
+  .product-thumb-info {
+    text-align: center;
+    padding-top: 7px;
+  }
+
+  .product-thumb-photo {
+    position: relative;
+    overflow: hidden;
+    line-height: 315px;
+    text-align: center;
+
+    height: 70%;
+    max-height: 130%;
+
+    @media screen and (min-width: $screen-md-min) {
+      height: 250px;
+      line-height: 315px;
+    }
+
+    img{
+      height: auto;
+      max-width: 100%;
+      margin: auto;
+      vertical-align: middle;
+      display: table-cell;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+  }
+
+  .product-thumb-brand,
+  .product-thumb-title {
+    display: block;
+    font-size: 0.86em;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .product-thumb-title {
+    text-transform: capitalize;
+  }
+
+  .product-thumb-brand{
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    height: 13px;
+  }
+
+  .product-thumb-title{
+    margin-bottom: 0.8em;
+    color: $grey-dark;
+    max-height: 3em;
+
+    @media screen and (min-width: $screen-sm-min) { line-height: 1.8; }
+  }
+
+  .product-thumb-description{ white-space: normal; }
+
+  .product-thumb-price{
+    display: block;
+
+    > span {
+      display: inline-block;
+      width: 32%;
+      font-size: 1em;
+      text-align: center;
+
+      &:not(.price-promotion) { line-height: 1.65em; }
+
+      @media screen and (max-width: $screen-xs-max) {
+        width: 48%;
+      }
+
+      &.old, &.reduction { white-space: nowrap; }
+
+      &.old{ text-decoration: line-through; }
+      &.reduction{ color: $red; font-weight: bold; }
+      &.price-promotion {
+        line-height: 8px;
+        border: 1px solid #DB1212;
+        vertical-align: baseline;
+        display: inline-block;
+        border-radius: 2px;
+        position: relative;
+        padding: 0.3em;
+        color: #DB1212;
+        right: 0; margin-top: -4px;
+        font-size: 0.845em;
+      }
+
+    }
+
+  }
+
+}

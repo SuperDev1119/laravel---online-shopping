@@ -1,0 +1,136 @@
+
+
+
+
+	/**
+	*
+	*	RANGE|SCSS
+	*	-------------------
+	*	MODULE | Range slider module styles
+	*	LOCATION | > styles > modules > controls > range.scss
+	*
+	*/
+
+
+
+
+	
+	/*----------  STYLES  ----------*/
+	
+	
+
+	// Base
+
+	.range-slider{
+
+		position:relative;
+		margin-bottom:1rem;
+		width:100%;
+		height:1px;
+		background-color:$black;
+		user-select: none;
+
+		.range-slider-handle{
+
+			position:absolute;
+			z-index:500;
+			top:0;
+			left:0;
+			width:100%;
+			height:1px;
+			background-color:$grey;
+
+			span{
+
+				display: block;
+				position:absolute;
+				font-size: 0.9em;
+				top:-2rem;
+				width:100%;
+
+				&:after{
+
+					display: block;
+					content:'';
+					position:absolute;
+					top:calc(2rem - 3px);
+					width:8px;
+					height:8px;
+					background-color:$black;
+					border-radius:4px;
+
+				}
+
+			}
+
+			&.range-slider-left-handle{
+
+				left:-100%;
+				text-align:right;
+
+				span{
+
+					right:-10px;
+
+					&:after{
+
+						right:6px;
+
+					}
+
+				}
+
+			}
+
+			&.range-slider-right-handle{
+
+				left:100%;
+
+				span{
+
+					left:-10px;
+
+					&:after{
+
+						left:6px;
+
+					}
+
+				}
+
+			}
+
+		}
+
+		&:before{
+
+			display: block;
+			content:'';
+			width:100px;
+			height:1px;
+			display: block;
+			position:absolute;
+			top:0;
+			left:-104px;
+			background-color:$white;
+			z-index:1000;
+
+		}
+
+		&:after{
+
+			display: block;
+			content:'';
+			width:100px;
+			height:1px;
+			display: block;
+			position:absolute;
+			top:0;
+			right:-104px;
+			background-color:$white;
+			z-index:1000;
+
+		}
+
+	}
+		

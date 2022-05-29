@@ -1,0 +1,428 @@
+$header-sections-height: 55px;
+$header-height: $header-sections-height * 2;
+$header-horizontal-padding: 60px;
+
+$header-responsive-height: 70px;
+$header-responsive-menu-width: 250px;
+
+$header-logo-height: 1.2em;
+$header-logo-margin-right: 5em;
+
+$header-submenu-height: 30em;
+
+$header-searching-animaiton-duration: 0.4s;
+
+/* Fix search bar overflow */
+.big-menu__top-menu__logo { position: relative; z-index: 2; }
+.search { z-index: 1; }
+.search { pointer-events: none; .search__wrapper { pointer-events: auto; } } // this is perfect, bug doenst work on IE :(
+
+.big-menu__container { position: relative; }
+.big-menu__menu {
+  position: absolute;
+  left: 0; right: 0;
+}
+.search__results,
+.big-menu__main-menu__item > .big-menu__menu-panel,
+.big-menu__sub-menu {
+  left: -4.1em!important;
+  right: -4.1em!important;
+  width: auto!important;
+}
+/* END */
+
+.main {
+  padding-top: $header-height;
+
+  @media screen and (max-width: $screen-md){
+    padding-top: 0!important;
+  }
+}
+
+.big-menu {
+  font-size: 12px;
+  background-color: #ffffff;
+  width: 100%;
+  height: $header-height;
+  position: fixed;
+  display: block;
+  z-index: 1000;
+
+  @media screen and (max-width: $screen-md){
+    display: none;
+  }
+}
+
+.big-menu__container {
+  margin-left: 1em;
+  @media screen and (min-width: $screen-lg) { margin: 0 4.1em; }
+}
+
+.big-menu__section {
+  height: $header-sections-height;
+  line-height: $header-sections-height;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.big-menu__top-menu {
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0; right: 0;
+    height: 3px;
+    background-image: $gradient;
+    transition: height 250ms ease;
+  }
+
+  &.big-menu__top-menu--search-results-expanded {
+    &::before {
+      height: $header-sections-height;
+    }
+
+    .big-menu__top-menu__logo svg {
+      fill: $white;
+    }
+  }
+}
+
+.big-menu__top-menu__logo {
+  display: inline-block;
+  height: $header-logo-height;
+}
+
+.big-menu__top-menu__logo svg,
+.big-menu__top-menu__logo img, {
+  height: 3em;
+  position: relative;
+  top: 8px;
+  transition: fill 250ms ease;
+}
+
+.header-logo img { height: 3em !important; }
+
+.big-menu__main-menu__user-bar {
+  text-transform: capitalize;
+  letter-spacing: 0em;
+
+  float: right;
+  clear: both;
+}
+
+.big-menu__main-menu__user-bar__item {
+  display: inline-block;
+  margin-left: 2.5em;
+
+  &:first-child {
+    margin-left: 0em;
+  }
+}
+
+.big-menu__main-menu__user-bar__link {
+  display: block;
+}
+
+.big-menu__main-menu__items {
+  margin: 0;
+}
+
+$menu-item-padding: 1.6em;
+.big-menu__main-menu__item {
+  display: inline-block;
+  float: left;
+  > a {
+    padding-left: $menu-item-padding/2;
+    padding-right: 1em;
+    letter-spacing: 3px;
+  }
+
+  &:first-child {
+    margin-left: 0em;
+    > a { padding-left: 0; }
+  }
+}
+
+.big-menu__main-menu__item--pulled-right {
+  float: right;
+}
+
+.big-menu__main-menu__link {
+  display: block;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.2em;
+
+    margin-top: -0.2em;
+
+    background-color: $blue;
+
+    transition: transform 0.3s ease;
+
+    transform-origin: left;
+
+    transform: scaleX(0);
+  }
+}
+
+.big-menu__main-menu__link:hover {
+  &:after {
+    -webkit-transform: scaleX(1);
+    -ms-transform: scaleX(1);
+    -o-transform: scaleX(1);
+    transform: scaleX(1);
+  }
+}
+
+.big-menu__menu [class$="__item"]:hover > .big-menu__menu,
+.big-menu__main-menu__link:hover + .big-menu__menu .big-menu__sub-menu__item:first-child .big-menu__menu {
+  display: flex;
+}
+
+.big-menu__sub-menu {
+  display: none;
+
+  position: absolute;
+  height: $header-sections-height;
+  width: 100%;
+  z-index: 1000;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: $header-sections-height;
+  font-weight: 700;
+
+  left: 0;
+
+  // transition: all 0.3s ease;
+
+  background-color: $white;
+  border-bottom: 1px solid #e7e6e6;
+}
+
+$sub-menu-item-padding: 2.8em;
+.big-menu__sub-menu__item {
+  display: inline-block;
+  float: left;
+  > a { padding-left: $sub-menu-item-padding/2; padding-right: $sub-menu-item-padding/2; }
+
+  &:first-child {
+    margin-left: 0em;
+    > a { padding-left: 4.1em; }
+  }
+}
+
+.big-menu__sub-menu__link {
+  display: block;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 0.2em;
+
+    margin-top: -0.2em;
+
+    background-color: $black;
+
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    transform: scaleX(0);
+  }
+}
+
+.big-menu__sub-menu__link:hover {
+  &:after {
+    transform: scaleX(0.3);
+  }
+}
+
+.big-menu__sub-menu__link--red {
+  display: block;
+  color: $red;
+
+  &:after { background-color: $red; }
+}
+
+.big-menu__menu-panel {
+  width: 100%;
+
+  font-size: 12px;
+  line-height: initial;
+
+  background-color: $white;
+
+  position: absolute;
+  padding: 2em 4em 2.5em 4em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  vertical-align: bottom;
+
+  display: none;
+  z-index: 1;
+}
+
+.big-menu__menu-panel,  {
+  border-bottom: 1px solid #e7e6e6;
+}
+
+.big-menu__menu-panel__categories {
+  width: 100%;
+}
+
+.big-menu__menu-panel__brands {
+  width: 100%;
+
+  .big-menu__menu-panel__items {
+    column-width: 8.3em;
+    column-count: 6;
+    column-gap: 0;
+  }
+
+  .big-menu__menu-panel__button {
+    display: inline-block;
+    width: auto;
+    margin: 30px auto 0;
+  }
+}
+
+.big-menu__menu-panel__title {
+  font-weight: 700;
+  margin-bottom: 2.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+
+}
+
+.big-menu__menu-panel__items {
+  -webkit-column-width: 8.3em;
+  -moz-column-width: 8.3em;
+  -o-column-width: 8.3em;
+  column-width: 8.3em;
+
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+  -o-column-count: 4;
+  column-count: 4;
+
+  -webkit-column-gap: 1em;
+  -moz-column-gap: 1em;
+  -o-column-gap: 1em;
+  column-gap: 1em;
+}
+
+.big-menu__menu-panel__item {
+  margin-bottom: 1.2em;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-transform: none;
+}
+
+.big-menu__menu-panel__button {
+  width: 100%;
+  padding: 1.4em 5%;
+  margin: 1.5em auto 0;
+
+  display: block;
+
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: center;
+
+  border: solid 0.2em $black;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $black;
+    color: $white
+  }
+}
+
+.big-menu__menu-panel__currated {
+  height: 27em;
+  width: 21%;
+  vertical-align: bottom;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  color: $white;
+
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.big-menu__menu-panel__currated__title {
+  font-size: 1.3em;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 2em;
+
+  white-space: normal;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  max-width: 150px;
+
+  &::first-line {
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    background-color: $white;
+
+    height: 0.2em;
+    width: 0.8em;
+
+    margin-top: 2.5em;
+    margin-bottom: 2.5em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.big-menu__menu-panel__currated__cta {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: underline;
+
+  display: block;
+}
+
+
+body.fixed {
+  .big-menu {
+    height: 55px;
+
+    &__sub-menu {
+      left: -150px!important;
+
+      @media screen and (min-width: $screen-lg) {
+        left: -250px!important;
+      }
+    }
+  }
+  .main { padding-top: 55px; }
+  .big-menu__main-menu { margin-left: 180px; }
+  .big-menu__top-menu, .big-menu__main-menu { float: left; }
+}

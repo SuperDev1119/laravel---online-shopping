@@ -1,0 +1,37 @@
+.content-redirect{
+  display: flex;
+  flex-direction: column;
+  height: 100%;width: 100%;
+  position: relative;
+  justify-content: center;
+
+  .logo{
+    text-align: center;
+
+    img{ width: 25em; }
+  }
+
+  .loading-redirect{
+    margin: 50px 0 50px 0;
+    height: 4px;
+    animation:loading-redirect 3s;
+    background-color: #0072bc;
+  }
+
+  @keyframes loading-redirect {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+
+  .merchant-redirect{
+    text-align: center;
+
+    span{
+      letter-spacing: 0.085em;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .content-redirect .logo{ img{ width: 20em; } }
+}

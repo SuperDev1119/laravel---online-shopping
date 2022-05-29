@@ -1,0 +1,18 @@
+{
+    "filters__gender": "Genre",
+    "filters__colors": "Couleurs",
+    "filters__brand_original": "Marques",
+    "filters__cols": "Cols",
+    "filters__coupes": "Coupes",
+    "filters__manchess": "Manches",
+    "filters__materials": "Matières",
+    "filters__merchant_original": "Vendu par",
+    "filters__models": "Modèles",
+    "filters__motifss": "Motifs",
+    "filters__events": "Évènements",
+    "filters__styles": "Styles",
+    "filters__sizes": "Tailles",
+    "filters__livraison": "Livraison",
+    "filters__promotion": "Promo %",
+    "filters__price": "Prix"
+}

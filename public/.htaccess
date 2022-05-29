@@ -1,0 +1,206 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    # Redirect Trailing Slashes...
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    RewriteRule ^(.*)/prix$ /$1?sort=prix [L,R=410]
+    RewriteRule ^(.*)/nouveautes$ /$1?sort=nouveautes [L,R=410]
+
+    # Now, rewrite any request to the wrong domain to use www.
+    RewriteCond %{HTTP_HOST} ^modalova.com$
+    RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Production
+    #RewriteCond %{HTTPS} !on
+    #RewriteCond %{HTTP_HOST} ^www.
+    #RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Staging
+    #RewriteCond %{HTTPS} !on
+    #RewriteCond %{HTTP:CF-Visitor} '"scheme":"http"'
+    #RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# We-Enjoy.IT customisation
+
+# Better website experience for IE users
+# ----------------------------------------------------------------------
+# Force the latest IE version, in various cases when it may fall back to IE7 mode
+# github.com/rails/rails/commit/123eb25#commitcomment-118920
+# Use ChromeFrame if it's installed for a better experience for the poor IE folk
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=Edge,chrome=1"
+    # mod_headers can't match by content-type, but we don't want to send this header on *everything*...
+    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webm|webp|woff|xml|xpi)$">
+        Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
+
+# CORS-enabled images (@crossorigin)
+# ----------------------------------------------------------------------
+#
+# Send CORS headers if browsers request them; enabled by default for images.
+# developer.mozilla.org/en/CORS_Enabled_Image
+# blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
+# hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+# wiki.mozilla.org/Security/Reviews/crossoriginAttribute
+<IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+    # mod_headers, y u no match by Content-Type?!
+    <FilesMatch "\.(gif|ico|jpe?g|png|svg|svgz|webp)$">
+        SetEnvIf Origin ":" IS_CORS
+        Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
+    </IfModule>
+</IfModule>
+
+# Webfont access
+# ----------------------------------------------------------------------
+# Allow access from all domains for webfonts.
+# Alternatively you could only whitelist your
+# subdomains like "subdomain.example.com".
+<IfModule mod_headers.c>
+    <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# Gzip compression
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+    # Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    # Compress all output labeled with one of the following MIME-types
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE application/atom+xml \
+            application/javascript \
+            application/json \
+            application/rss+xml \
+            application/vnd.ms-fontobject \
+            application/x-font-ttf \
+            application/xhtml+xml \
+            application/xml \
+            font/opentype \
+            image/svg+xml \
+            image/x-icon \
+            text/css \
+            text/html \
+            text/plain \
+            text/x-component \
+            text/xml
+    </IfModule>
+</IfModule>
+
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+# These are pretty far-future expires headers.
+# They assume you control versioning with filename-based cache busting
+# Additionally, consider that outdated proxies may miscache
+# www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+# If you don't use filenames to version, lower the CSS and JS to something like
+# "access plus 1 week".
+<IfModule mod_expires.c>
+    ExpiresActive on
+
+    # Perhaps better to whitelist expires rules? Perhaps.
+    ExpiresDefault              "access plus 1 month"
+
+    # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
+    ExpiresByType text/cache-manifest "access plus 0 seconds"
+
+    # Your document html
+    ExpiresByType text/html         "access plus 0 seconds"
+
+    # Data "access plus 0 seconds"
+    ExpiresByType application/json      "access plus 0 seconds"
+    ExpiresByType application/xml       "access plus 0 seconds"
+    ExpiresByType text/xml          "access plus 0 seconds"
+
+    # Feed "access plus 1 hour"
+    ExpiresByType application/atom+xml  "access plus 1 hour"
+    ExpiresByType application/rss+xml   "access plus 1 hour"
+
+    # Favicon (cannot be renamed)
+    ExpiresByType image/x-icon      "access plus 1 week"
+
+    # Media: images, video, audio "access
+    ExpiresByType audio/ogg         "access plus 1 month"
+    ExpiresByType image/gif         "access plus 1 month"
+    ExpiresByType image/jpeg        "access plus 1 month"
+    ExpiresByType image/png         "access plus 1 month"
+    ExpiresByType video/mp4         "access plus 1 month"
+    ExpiresByType video/ogg         "access plus 1 month"
+    ExpiresByType video/webm        "access plus 1 month"
+
+    # HTC files (css3pie) "access plus 1 month"
+    ExpiresByType text/x-component      "access plus 1 month"
+    # Webfonts
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+    ExpiresByType application/x-font-ttf        "access plus 1 month"
+    ExpiresByType application/x-font-woff       "access plus 1 month"
+    ExpiresByType font/opentype         "access plus 1 month"
+    ExpiresByType image/svg+xml         "access plus 1 month"
+
+    # CSS and JavaScript
+    ExpiresByType application/javascript    "access plus 1 week"
+    ExpiresByType text/css          "access plus 1 week"
+</IfModule>
+
+# ETag removal
+# ----------------------------------------------------------------------
+# FileETag None is not enough for every server.
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+
+# A little more security
+# ----------------------------------------------------------------------
+# To avoid displaying the exact version number of Apache being used, add the
+# following to httpd.conf (it will not work in .htaccess):
+# ServerTokens Prod
+# "-Indexes" will have Apache block users from browsing folders without a
+# default document Usually you should leave this activated, because you
+# shouldn't allow everybody to surf through every folder on your server (which
+# includes rather private places like CMS system folders).
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Block access to "hidden" directories or files whose names begin with a
+# period. This includes directories used by version control systems such as
+# Subversion or Git.
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# Block access to backup and source files. These files may be left by some
+# text/html editors and pose a great security danger, when anyone can access
+# them.
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
+    Order allow,deny
+    Deny from all
+    Satisfy All
+</FilesMatch>
+
+# Increase cookie security
+<IfModule mod_php5.c>
+    php_value session.cookie_httponly true
+</IfModule>

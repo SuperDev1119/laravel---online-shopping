@@ -1,0 +1,34 @@
+{
+  "name": "modalova",
+  "environments": {
+  },
+  "env": {
+    "APP_DEBUG": "true",
+    "APP_ENV": "local",
+    "APP_IMPORT_PRODUCT_STORE_PAYLOAD": "true",
+    "APP_IMPORT_SHOW_DEBUG": "true",
+    "APP_LOG_LEVEL": "debug",
+    "CACHE_DRIVER": "memcached-memcachier",
+    "QUEUE_DRIVER": "redis"
+  },
+  "scripts": {
+    "postdeploy": "php artisan db:seed --force ; php artisan update:sources ; php artisan import:products"
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql:hobby-dev",
+    "logentries:le_tryit",
+    "memcachier:dev",
+    "rediscloud:30",
+    "scheduler:standard",
+    {
+      "plan": "bonsai:sandbox-6",
+      "as": "ELASTICSEARCH"
+    }
+  ],
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "heroku/php" }
+  ]
+}

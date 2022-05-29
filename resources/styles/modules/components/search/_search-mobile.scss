@@ -1,0 +1,207 @@
+$input-color: #f0f0f0;
+$gradient-height: 4px;
+$input-height: 55px;
+$close-button-width: 45px;
+$gender-select-width: 100px;
+$padding: 0;
+
+.search-mobile {
+  display: none;
+  position: fixed;
+  right: 0;
+  left: 0;
+  height: 100%;
+  background: $white;
+  z-index: 1000;
+  // overflow-y: scroll;
+
+  &.search-mobile--opened {
+    display: block;
+
+    .search-mobile__search-icon { display: none; }
+  }
+
+  &::before {
+    content: '';
+    position: fixed;
+    right: 0;
+    left: 0;
+    height: $gradient-height;
+    background: $gradient;
+    z-index: 200;
+  }
+
+  .search-mobile__search-icon,
+  .search-mobile__input,
+  .search-mobile__gender,
+  .search-mobile__close {
+    position: fixed !important; // Override default Algolia styles.
+    top: $gradient-height;
+    height: $input-height - $gradient-height - 1px;
+    line-height: $input-height;
+  }
+
+  .search-mobile__search-icon {
+    font-size: $input-height;
+    z-index: 300;
+  }
+
+  .search-mobile__gender {
+    right: $padding + $close-button-width;
+    width: $gender-select-width;
+    line-height: 1;
+    padding: 0 4px;
+    font-size: 16px; // 16px is the minimum font-size so that it doesn’t zoom when focusing on iOS.
+    background-color: $white;
+    z-index: 300;
+
+    .search-mobile__gender-select {
+      align-items: center; // Override default select styles.
+      height: 100%;
+    }
+
+    .search-mobile__gender-caret {
+      vertical-align: middle;
+      pointer-events: none; // Allow click through.
+    }
+  }
+
+  .search-mobile__close {
+    right: $padding;
+    width: $close-button-width;
+    background-color: #484848;
+    z-index: 300;
+    cursor: pointer;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 1px;
+      width: 15px;
+      background: $input-color;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(45deg) translateZ(0);
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(-45deg) translateZ(0);
+    }
+  }
+
+  .search-mobile__algolia-wrapper {
+    position: absolute !important; // Override default Algolia styles.
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    padding: 0 $padding;
+
+    .search-mobile__input {
+      width: 100%;
+      padding: 0 40px;
+      font-size: 16px; // 16px is the minimum font-size so that it doesn’t zoom when focusing on iOS.
+      font-weight: bold;
+      background: $input-color;
+      z-index: 200;
+
+      // Placeholder colors, text will be the default grey on navigators not
+      // supporting these selectors.
+      &::-webkit-input-placeholder {
+        color: $black;
+      }
+
+      &:-moz-placeholder {
+        color: $black;
+      }
+
+      &::-moz-placeholder {
+        color: $black;
+      }
+
+      &:-ms-input-placeholder {
+        color: $black;
+        font-size: 11px;
+        vertical-align: middle;
+      }
+    }
+
+    /**
+     * 1. Override default Algolia styles.
+     */
+    .search-mobile__results {
+      position: absolute !important; /* 1 */
+      left: 0 !important;  /* 1 */
+      top: 50px; /* 1 */
+      right: 0 !important;
+
+      background: #fff;
+
+      .search__dataset-title {
+        display: block;
+        font-size: 1.5em;
+        font-weight: bold;
+      }
+
+      /**
+       * 1. Fixes icons wrappers being larger than the icon itself, causing
+       *    misalignement.
+       */
+      .search__dataset-all-link-wrapper {
+        position: relative; /* 1 */
+        left: -6px; /* 1 */
+        padding: 1.5em 0;
+        font-weight: bolder;
+        text-transform: uppercase;
+
+        .search__dataset-all-link-icon {
+          font-size: 1.5em;
+          vertical-align: middle;
+        }
+
+        .search__dataset-all-link {
+          vertical-align: middle;
+        }
+      }
+
+      .search__dataset-container {
+        margin-top: 1.5em;
+        padding: 0 2em;
+        border-bottom: 2px solid $grey-light;
+        line-height: 1;
+      }
+
+      .search__dataset {
+        margin-top: 1em;
+      }
+
+      .search__suggestion,
+      .search__suggestion-brand,
+      .search__suggestion-name {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .search__suggestion {
+        display: inline-block;
+        max-width: 100%;
+        padding: 8px;
+        margin: 6px;
+        margin-left: 0;
+        background-color: $input-color;
+        border-radius: 3px;
+      }
+
+      .search__suggestion-brand {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 0.5em;
+      }
+    }
+  }
+}

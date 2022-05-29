@@ -1,0 +1,39 @@
+ul.breadcrumb{
+  margin: 0;
+  font-size: 1.1em;
+
+  > li{
+    float: left;
+    vertical-align: top;
+
+    margin-top: 5px;
+    @media screen and (min-width: $screen-md-min) { margin-top: 12px; }
+
+    a { color: $grey-dark; }
+    span { font-size: 0.86em; letter-spacing: 0.093em; }
+
+    &:after{
+      display: inline-block;
+      vertical-align: middle;
+      content: "\e610";
+      font-family: $font-icons;
+      font-weight: 900;
+      color: black;
+      margin-left: 0.4em;
+      margin-right: 0.8em;
+      margin-top: -0.15em;
+    }
+
+    &:last-child:after{ display: none; }
+    &:last-child, &:last-child a{ color: $black; }
+  }
+}
+
+.container {
+  ul.breadcrumb {
+    > li {
+      margin-bottom: 0.5em;
+      margin-top: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+/vendor
+/.vagrant
+phpunit.xml
+/Homestead.yaml
+/Homestead.json
+/aliases
+/mysqldump.sql.gz
+/mysql_backup
+/postgres_backup
+/user-customizations.sh
+.phpunit.result.cache
+wsl-init.log
+.backup/*

@@ -1,0 +1,235 @@
+// Paddings
+$button-vertical-padding: 1.2em;
+$button-horizontal-padding: 1.5em;
+
+// Border
+$button-border-size: 2px;
+$button-border-radius: 2px;
+
+// Shadow
+$button-box-shadow: true;
+
+// Base
+.btn{
+
+  display: inline-block;
+  padding: $button-vertical-padding - 0.04em $button-horizontal-padding $button-vertical-padding $button-horizontal-padding;
+  background-color: $white;
+  border: $button-border-size solid $blue;
+  border-radius: $button-border-radius;
+  font-weight: 700;
+  font-size: 0.86em;
+  letter-spacing: 0.093em;
+  height: auto !important;
+  color: $blue;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: all 0.2s ease;
+
+
+  &:hover{ background-color: $blue; color: $white; }
+
+  &.btn-filled{
+
+    background-color: $blue;
+    color: $white;
+
+    &:hover{ background-color: lighten($blue, 10%); border-color: lighten($blue, 10%); }
+
+  }
+
+}
+
+
+// Sizes
+
+.btn.btn-small{ padding: 0.4em 0.6em; }
+
+
+
+// Colors
+
+.btn {
+  border-radius: 0;
+  &-white { border-color: $white; }
+  &-black { border-color: $black; }
+}
+.btn-white, .btn-black:hover { color: $black; background-color: transparent; }
+.btn-black, .btn-white:hover { color: $white; background-color: $black; }
+
+// Filled
+
+.btn.btn-black.btn-filled{ background-color: $black; color: $white; }
+.btn.btn-black.btn-filled:hover{ background-color: lighten($black, 10%); border-color: $black; }
+
+
+// Disabled
+
+.btn.btn-disabled, .btn.btn-disabled:hover{
+
+  background-color: darken($grey-subtle, 1%);
+  border-color: darken($grey-subtle, 1%);
+  box-shadow: none;
+  color: $grey-dark;
+  cursor: default;
+  pointer-events: none;
+  font-size: 0.86em;
+  letter-spacing: 0.093em;
+  font-weight: normal;
+
+}
+
+
+
+// Block
+
+.btn.btn-block{
+
+  display: block;
+  width: 100%;
+  text-align: center;
+
+}
+
+
+
+
+
+/*----------  SPECIALS  ----------*/
+
+
+// Facebook
+
+.btn.btn-facebook{
+
+  background-color: $color-facebook;
+  border-color: $color-facebook;
+  color: $white;
+
+  &:hover{ background-color: lighten($color-facebook, 5%); }
+
+}
+
+
+// Network
+
+.btn.btn-network{
+
+  display: block;
+  width: 3em;
+  height: 3em !important;
+  border-radius: 1.75em;
+  border: none;
+  padding: 0;
+  color: $white;
+
+  i{
+
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+
+  }
+
+}
+
+@for $i from 1 to length($networks-colors) + 1 {
+
+  .btn.btn-network.btn-#{nth(nth($networks-colors, $i), 1)}{
+
+    background-color: nth(nth($networks-colors, $i), 2);
+
+    &:hover{ background-color: darken(nth(nth($networks-colors, $i), 2), 10%); }
+
+  }
+
+}
+
+
+// Follow
+
+.btn.btn-follow{
+  position: relative;
+  border-color: $black;
+  color: $black;
+  padding: 0.6em 0.8em 0.6em 35px;
+  transition: width 0.4s ease;
+  font-size: 0.7em;
+  font-weight: normal;
+
+  &:after{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: '+';
+    font-size: 1.5em;
+    // font-weight: 700;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 100%;
+    transition: transform 0.4s ease, color 0.3s ease;
+
+  }
+
+  &:before{
+
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 27px;
+    height: 100%;
+    border-right: 2px solid $black;
+    transition: background-color 0.2s ease;
+
+  }
+
+
+  // Hover
+
+  &:hover{
+
+    background-color: transparent;
+
+
+    &:before{ background-color: $black; }
+    &:after{ color: $white }
+
+  }
+
+
+  // Following
+
+  &.following{
+
+    &:before{ background-color: $black; }
+
+    &:after{
+
+      transform: rotate(45deg);
+      color: $white;
+
+    }
+
+  }
+
+}
+
+.btn.btn-follow.btn-white{
+  border-color: $white;
+  color: $white;
+
+  &:before{ border-color: $white; }
+  &:after{ color: $white; }
+
+  &:hover:before{ background-color: $white; }
+  &:hover:after{ color: $black; }
+}

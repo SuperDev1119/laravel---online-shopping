@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit>
+  <testsuites>
+      <testsuite name="Modalova Test Suite">
+          <directory suffix="Test.php">tests</directory>
+      </testsuite>
+  </testsuites>
+
+  <php>
+    <env name="APP_ENV" value="testing" />
+    <env name="APP_DEBUG" value="true" />
+    <env name="APP_LOG_LEVEL" value="debug" />
+    <env name="APP_IMPORT_SHOW_DEBUG" value="true" />
+    <env name="LOCALE" value="fr_FR" />
+    <env name="CURRENCY" value="EUR" />
+    <env name="MODEL_CACHE_ENABLED" value="false" />
+  </php>
+</phpunit>

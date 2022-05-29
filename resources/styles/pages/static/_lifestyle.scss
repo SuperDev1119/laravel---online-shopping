@@ -1,0 +1,129 @@
+
+
+
+
+/**
+  *
+  * LIFESTYLE|SCSS
+  * --------------------
+  * DESC| Lifestyle tpm static page styles
+  * LOCATION| > styles > pages > static > _lifestyle.scss
+  *
+  */
+
+
+
+
+
+
+
+  /*----------  STYLES  ----------*/
+
+
+
+  // Base
+
+  &{
+
+
+
+  }
+
+
+  // Banner
+
+.main-heading-banner{
+
+  background-image: url(/images/banners/banner_lifestyle.jpg);
+
+  .container {
+
+    padding-right: 19px;
+
+  }
+
+
+  .main-heading-content{
+
+    text-align: center;
+    padding: 65px 19px 0px 20px;
+    border-bottom: none;
+
+    img.main-heading-image{
+
+      margin: 0 auto;
+      width: 175px;
+      height: auto;
+
+    }
+
+  }
+
+}
+
+// Content
+
+.container {
+
+  .lifestyle-title{
+
+    h2.coming-soon{
+
+      text-align: center;
+      padding-top: 15px;
+      font-size: 1.8em;
+      letter-spacing: 0.65em;
+      text-transform: uppercase;
+      padding-bottom: 50px;
+
+      &:after{
+
+        display: block;
+        content: "";
+        width: 53px;
+        height: 1px;
+        background-color: black;
+        position: relative;
+        bottom: -0.9em;
+        left: 50%;
+        margin-left: -27px;
+      }
+
+    }
+
+  }
+
+  p.lifestyle-texte {
+
+    text-align: center;
+    font-size: 0.86em;
+    letter-spacing: 0.093em;
+    padding-bottom: 50px;
+
+  }
+
+}
+
+
+
+
+/*----------  RESPONSIVE  ----------*/
+
+
+
+// Mobile
+
+@media screen and (max-width: $screen-xs-max){
+
+
+  // Elements
+
+  .container .lifestyle-title h2.coming-soon{
+
+    line-height: 2;
+    font-size: 1.2em;
+
+  }
+
+}
+

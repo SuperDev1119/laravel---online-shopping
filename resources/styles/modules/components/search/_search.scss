@@ -1,0 +1,272 @@
+$input-color: #f0f0f0;
+$search-bar-height: 50px;
+$search-bar-width: 50%;
+
+.search {
+  position: absolute;
+  top: 55px; left: 0; right: 0;
+
+  @media (min-width: $screen-md) { top: 3px; left: 55%; right: 0; }
+  @media (min-width: 1400px) { left: 45%; right: 0; }
+
+  .search__wrapper {
+    margin: 0 auto;
+  }
+
+  $gender-select-width: 0px; // 105px;
+  $gender-select-large-width: 0px; // 120px;
+  $submit-button-width: $search-bar-height + 2px;
+  $input-width: calc(100% - #{$gender-select-width} - #{$submit-button-width});
+  $input-large-width: calc(100% - #{$gender-select-large-width} - #{$submit-button-width});
+
+  .search__form {
+    height: $search-bar-height;
+    font-weight: 700;
+  }
+
+  .search__algolia-wrapper {
+    position: static !important; // Override default Algolia styles.
+    float: left;
+    width: $input-width;
+    height: 100%;
+
+    @media (min-width: $screen-lg) {
+      width: $input-large-width;
+    }
+
+    // The input width is set at a specific value as long as the algolia
+    // script isn’t loaded. When it is, the width is set back to 100%. We do
+    // this to avoid the content quickly changing width at page load.
+    .search__input {
+      width: 100%;
+    }
+  }
+
+  .search__input {
+    float: left;
+    width: $input-width;
+    height: 100%;
+    padding: 0 2em;
+    font-weight: inherit;
+    background-color: $input-color;
+    z-index: 200;
+
+    @media (min-width: $screen-lg) {
+      width: $input-large-width;
+    }
+
+    // Placeholder colors, text will be the default grey on navigators not
+    // supporting these selectors.
+    &::-webkit-input-placeholder {
+      color: $black;
+    }
+
+    &:-moz-placeholder {
+      color: $black;
+    }
+
+    &::-moz-placeholder {
+      color: $black;
+    }
+
+    &:-ms-input-placeholder {
+      color: $black;
+    }
+  }
+
+  .search__gender {
+    position: relative;
+    float: left;
+    width: $gender-select-width;
+    height: 100%;
+    line-height: 1;
+    background-color: $white;
+    z-index: 200;
+
+    @media (min-width: $screen-lg) {
+      width: $gender-select-large-width;
+    }
+
+    .search__gender-select {
+      align-items: center; // Override default select styles.
+      padding: 1em;
+      padding-right: 3.5em;
+      height: 100%;
+      font-weight: inherit;
+    }
+
+    .search__gender-caret {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0.5em;
+      font-size: 1.5em;
+      font-weight: inherit;
+      pointer-events: none; // Allows click through to trigger the select.
+    }
+  }
+
+  .search__submit {
+    position: relative;
+    width: $submit-button-width;
+    height: 100%;
+    background-color: #484848;
+    cursor: pointer;
+    z-index: 200;
+
+    .search__submit-icon {
+      color: $white;
+      font-size: 4em;
+    }
+  }
+
+  /**
+   * 1. `!important` used to override default Algolia styles.
+   */
+  .search__results {
+    margin-top: 2px;
+
+    position: absolute !important; /* 1 */
+    top: 100% !important; /* 1 */
+    width: 100%;
+    padding: 4em 1em 3em;
+    border: 1px solid $grey-light;
+    border-top: 0;
+    background: $white;
+    z-index: 100 !important; /* 1 */
+
+    left: -20em!important;
+    @media (min-width: 1400px) {
+      left: -10em!important;
+      right: -10em!important;
+    }
+
+    .search__datasets {
+      display: flex;
+      justify-content: space-around;
+      margin: 0; // Override default ul styles.
+      line-height: normal;
+
+      $title-dash-width: 26px;
+      $title-dash-margin: 16px;
+      $title-dash-offset: $title-dash-width + $title-dash-margin;
+
+      .search__dataset-title {
+        font-size: 1.3em;
+        text-transform: none;
+
+        &::before {
+          content: '';
+          display: inline-block;
+          margin-right: $title-dash-margin;
+          vertical-align: middle;
+          width: $title-dash-width;
+          height: 2px;
+          background-color: $black;
+        }
+      }
+
+      $suggestion-height: 2.5em;
+
+      .search__dataset-container {
+        max-width: 50%;
+
+        &:last-child {
+          max-width: none;
+        }
+      }
+
+      .search__dataset {
+        min-height: $suggestion-height; // This should be synced with the SUGGESTIONS_COUNT variable in `algolia_search.js`
+        margin-top: 1.5em;
+        padding-left: $title-dash-offset;
+        font-weight: normal;
+        text-transform: none;
+
+        .search__suggestion {
+          line-height: $suggestion-height;
+        }
+
+        .search__suggestion-link {
+          white-space: nowrap !important; // Override default Algolia styles.
+          display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &:focus {
+            color: #1c89e6;
+          }
+        }
+      }
+
+      .search__dataset-products {
+        text-align: center;
+
+        .search__suggestions-list {
+          display: flex !important; // Override default Algolia styles.
+          min-height: calc(100% - #{$suggestion-height});
+          flex-wrap: wrap;
+        }
+
+        .search__suggestion {
+          $product-suggestion-width: 100px;
+          line-height: 1;
+
+          flex: 1 0 33%;
+          margin-bottom: 2em;
+
+          .search__suggestion-image {
+            display: block;
+            max-height: $product-suggestion-width;
+            margin: 0 auto;
+          }
+
+          /**
+           * 1. Adds ellipsis when product title is too long.
+           */
+          .search__suggestion-brand,
+          .search__suggestion-name {
+            display: block;
+            max-width: $product-suggestion-width;
+            height: 1em;
+            line-height: 1em;
+            margin: 0.5em auto 0;
+            overflow: hidden; /* 1 */
+            text-overflow: ellipsis; /* 1 */
+            white-space: nowrap; /* 1 */
+
+            text-align: center;
+          }
+
+          .search__suggestion-name {
+            color: $grey;
+          }
+        }
+      }
+
+      /**
+       * 1. Fixes icons wrappers being larger than the icon itself, causing
+       *    misalignement.
+       */
+      .search__dataset-all-link-wrapper {
+        position: relative; /* 1 */
+        left: -6px; /* 1 */
+        margin-top: 2em;
+        padding-left: $title-dash-offset;
+
+        .search__dataset-all-link-icon {
+          vertical-align: middle;
+          font-size: 1.5em;
+        }
+
+        .search__dataset-all-link {
+          vertical-align: middle;
+        }
+
+        .search__products-count {
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}

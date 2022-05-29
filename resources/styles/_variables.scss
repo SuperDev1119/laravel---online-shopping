@@ -1,0 +1,93 @@
+// Contrast
+$black: #202020;
+$black-light: lighten($black, 10%);
+$white: #FFFFFF;
+
+// Greys
+$grey: #CDCDCD;
+// $grey-light: #F3F2F2;
+$grey-light: lighten($grey, 10%);
+$grey-subtle: #FBFBFB;
+$grey-dark: darken($grey, 40%);
+
+$grey-v3: #F6F6F6;
+
+// Graphic
+$blue: #1c89e6;
+$red: #DB1212;
+$green: #71C94B;
+
+// Gradients
+$gradient: linear-gradient(90deg, #908dd4 0%, #4ad4c5 100%);
+
+// Networks
+$networks-colors: (
+	( "ig",  #833AB4 ),
+	( "facebook", #507CBE ),
+	( "twitter",  #63CDF1 ),
+	( "google", #4D4F54 ),
+	( "youtube", #F16261 ),
+	( "tumblr", #4D7EA3 ),
+	( "pin", #F16261 )
+);
+
+// Specials
+$color-facebook: #0073b9;
+
+// Types
+$font-titles: Montserrat, serif;
+$font-content: Montserrat, serif;
+$font-icons: "Nouvelle-collection-typo";
+
+// Size
+$font-base-size: 14px;
+
+// Weights
+$font-title-weight: 700;
+$font-content-weight: 400;
+
+// Color
+$font-base-color: $black;
+
+// Mobile
+$screen-xs: 480px !default;
+$screen-xs-min: $screen-xs !default;
+$screen-phone: $screen-xs-min !default;
+
+// Small screen / tablet
+$screen-sm: 768px !default;
+$screen-sm-min: $screen-sm !default;
+$screen-tablet: $screen-sm-min !default;
+
+// Medium screen / desktop
+$screen-md: 992px !default;
+$screen-md-min: $screen-md !default;
+$screen-desktop:             $screen-md-min !default;
+
+// Large screen / wide desktop
+$screen-lg: 1200px !default;
+$screen-lg-min: $screen-lg !default;
+$screen-lg-desktop: $screen-lg-min !default;
+
+// Max
+$screen-xs-max: ($screen-sm-min - 1) !default;
+$screen-sm-max: ($screen-md-min - 1) !default;
+$screen-md-max: ($screen-lg-min - 1) !default;
+
+// Columns
+$grid-columns: 12 !default;
+$grid-gutter-width: 20px !default;
+$grid-float-breakpoint: $screen-sm-min !default;
+$grid-float-breakpoint-max: ($grid-float-breakpoint - 1) !default;
+
+
+// Containers
+$container-tablet: (720px + $grid-gutter-width) !default;
+$container-sm: $container-tablet !default;
+$container-desktop: (940px + $grid-gutter-width) !default;
+$container-md: $container-desktop !default;
+$container-large-desktop: (1140px + $grid-gutter-width) !default;
+$container-lg: $container-large-desktop !default;
+
+// Spacings
+$base-horizontal-padding: 40px;

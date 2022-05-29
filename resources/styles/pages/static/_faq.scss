@@ -1,0 +1,121 @@
+
+
+
+
+/**
+*
+* FAQ
+* Styles for F.A.Q page
+*
+*/
+
+
+
+
+
+
+/*----------  STYLES  ----------*/
+
+
+
+// Base
+
+.page-faq{
+
+  .main > .container{
+    padding-bottom: 20px;
+    margin-top: 0px;
+    border-top:0px;
+
+  }
+
+}
+
+
+
+// Faq
+
+.faq{
+
+  list-style: none;
+  padding: 0;
+  border: 1px solid $grey-light;
+
+
+  // Item
+
+  .faq-item{
+
+    border-bottom: 1px solid $grey-light;
+
+    &:last-child{ border-bottom: none; }
+
+    // Issue
+
+    .faq-item-issue{
+
+      display: block;
+      position: relative;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.0885em;
+      font-size: 0.86em;
+
+      padding: 1.5em 2em;
+      @media screen and (min-width: $screen-md-min) {
+        padding-left: 1.93em;
+        padding-right: 1.93em;
+      }
+
+      &:hover{background-color: #fcfcfc;}
+
+      &:after{
+
+        display: block;
+        font-family: Nouvelle-collection-typo;
+        font-size: 1.5em;
+        color: #636565;
+        content: "\e612";
+        position: absolute;
+        top: 50%;
+        right: 1.3333333333em;
+        transform: translate3d(0, -50%, 0);
+
+      }
+
+    }
+
+
+    // Content
+
+    .faq-item-content{
+
+      display: none;
+      padding: 2em 2em 2em 4em;
+      border-top: 1px solid $grey-light;
+
+    }
+
+
+  }
+
+
+  // Interactions
+
+  .faq-item.open{
+
+
+
+    .faq-item-content{
+      display: block;
+      font-size: 0.786em;
+      letter-spacing: 0.0885em;
+
+      &, & p { line-height: 1.7em; }
+    }
+
+  }
+
+}
+
+

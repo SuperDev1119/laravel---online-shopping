@@ -1,0 +1,52 @@
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
+body{
+	font-family: $font-content;
+	font-size: $font-base-size;
+	font-weight: $font-content-weight;
+	color: $font-base-color;
+	background-color: #fff;
+
+  transition: opacity ease .3s;
+
+  &.loading {
+    opacity: .5;
+    &, & a { cursor: wait!important; }
+  }
+}
+
+small, .small { vertical-align: top; }
+
+/**
+ * 1. iOS fix.
+ */
+.unscrollable {
+  position: relative; /* 1 */
+  height: 100%; /* 1 */
+  overflow: hidden;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.grid-columns{
+  width: 16.6666666667%;
+  padding: 0 10px;
+}
+
+@media (max-width: 1749px) {
+  .grid-columns { width: (100% / 5); }
+}
+@media (max-width: 1300px) {
+  .grid-columns { width: (100% / 4); }
+}
+@media (max-width: 1100px) {
+  .grid-columns { width: (100% / 3); }
+}
+@media (max-width: 600px) {
+  .grid-columns { width: (100% / 2); }
+}
